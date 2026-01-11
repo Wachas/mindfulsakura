@@ -1,0 +1,442 @@
+﻿@import 'color.scss';
+@import url('https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+$title-font: "Montserrat", sans-serif;
+$primary-font: "Gantari", sans-serif;
+
+
+/*......Defult.......*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    font-family: $primary-font;
+    background: $primary-bg;
+}
+
+.ta-front-body {
+    min-height: calc(100vh - 185px);
+}
+
+.container-fluid {
+    flex-grow: 1;
+    margin: 0 auto;
+    position: relative;
+    width: auto;
+}
+.ta-clip {
+    overflow: hidden;
+    position: relative;
+    -webkit-transform: translateX(-80%);
+    -ms-transform: translateX(-80%);
+    -o-transform: translateX(-80%);
+    transform: translateX(0%);
+    height: 100vh;
+}
+
+/*.........top header.........*/
+.ta-top-nav-info {
+    padding: 5px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    background: $secondary;
+
+    .ta-top-nav-left {
+        .ta-top-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+
+            a {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: $white;
+
+                span {
+                    font-size: 12px;
+                }
+
+                i {
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+
+    .ta-top-nav-right {
+        .ta-top-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            a {
+                color: $white;
+                font-size: 18px;
+            }
+        }
+    }
+}
+/*......Main header........*/
+header {
+    background: $black;
+    padding: 25px 50px;
+    min-height: 75px;
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+    .toggle-body {
+        position: absolute;
+        background: rgba(0,0,0,0.7);
+        left: 0;
+        right: 100%;
+        top: 75px;
+        z-index: 999;
+        height: calc(100vh - 58px);
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+
+        .toggle-body-wrapper {
+            height: 100%;
+            background: $black;
+            width: 600px;
+            padding: 30px 50px;
+        }
+
+        &.ta-open {
+            right: 0;
+            visibility: visible;
+            opacity: 1;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .toggle-link-wrapper {
+            ul {
+                display: flex;
+                flex-flow: column;
+
+                li {
+                    display: flex;
+
+                    &:not(:last-child) {
+                        border-bottom: 1px solid $white;
+                    }
+
+                    a {
+                        padding: 20px 0;
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+
+    nav {
+        position: relative;
+        width: 100%;
+
+        .ta-nav-left {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .ta-nav-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .ta-nav-right {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+
+            a {
+                font-size: 15px;
+                font-weight: 600;
+                color: $white;
+                display: flex;
+                text-transform: uppercase;
+                border: 2px solid $white;
+                border-radius: 2px;
+                padding: 4px 18px;
+            }
+        }
+
+        .ta-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+
+            .nav-toggle-wrapper {
+                display: block;
+                position: relative;
+                width: 24px;
+                height: 24px;
+                cursor: pointer;
+
+                &.ta-open {
+                    .nav-toggle {
+                        background: transparent;
+
+                        &::before {
+                            transform: rotate(-45deg);
+                        }
+
+                        &::after {
+                            transform: rotate(45deg);
+                        }
+                    }
+                }
+            }
+
+            .nav-toggle {
+                display: block;
+                top: 50%;
+                margin-top: -1px;
+                width: 24px;
+                height: 2px;
+                background-color: $white;
+                border-radius: 10px;
+                position: absolute;
+                transition: all 0.5s ease-in-out;
+
+                &::before {
+                    content: "";
+                    width: 24px;
+                    height: 2px;
+                    background-color: $white;
+                    border-radius: 10px;
+                    position: absolute;
+                    transform: translateY(-7px);
+                    transition: all 0.5s ease-in-out;
+                }
+
+                &::after {
+                    content: "";
+                    width: 24px;
+                    height: 2px;
+                    background-color: $white;
+                    border-radius: 10px;
+                    position: absolute;
+                    transform: translateY(7px);
+                    transition: all 0.5s ease-in-out;
+                }
+            }
+        }
+
+        .nav-item {
+            a {
+                font-size: 13px;
+                font-weight: 500;
+                text-transform: uppercase;
+                color: $white;
+            }
+        }
+
+        .ta-nav-logo {
+            a {
+                font-family: $title-font;
+                font-size: 28px;
+                font-weight: 500;
+                color: $white;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    .respo-icon {
+        display:none;
+    }
+}
+/*.....footer........*/
+
+footer {
+    background: $secondary;
+
+    .footer-body {
+        padding: 50px 0;
+    }
+
+    .footer-body {
+        display: flex;
+
+        .footer-item-wrapper {
+            width: 25%;
+            margin: 0 40px;
+            padding: 0 25px 20px 25px;
+            text-align: center;
+        }
+    }
+
+    .foot-top-left {
+        h3 {
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-family: $title-font;
+            color: $white;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 14px;
+            color: $white;
+            font-weight: 300;
+
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    .footer-title {
+        h3 {
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-family: $title-font;
+            color: $white;
+            margin-bottom: 20px;
+        }
+    }
+
+    .footer-content {
+        &:not(:last-child) {
+            margin-bottom: 28px;
+        }
+    }
+
+    .footer-value {
+        p, a, span {
+            font-size: 14px;
+            color: $white;
+            font-weight: 300;
+        }
+
+        ul {
+            li {
+                &:not(:last-child) {
+                    margin-bottom: 3px;
+                }
+            }
+        }
+
+        &.foot-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+
+            i {
+                font-size: 24px;
+            }
+        }
+
+        .foot-ctb {
+            font-size: 14px;
+            font-weight: 300;
+            color: $white;
+            display: flex;
+            text-transform: uppercase;
+            border: 1px solid $white;
+            border-radius: 2px;
+            padding: 5px 40px;
+            width: max-content;
+            margin: auto;
+        }
+    }
+
+    .hr-value {
+        display:flex;
+        flex-flow:column;
+        gap:2px;
+        &:not(:last-child) {
+            margin-bottom:18px;
+        }
+    }
+}
+.footer-bar {
+    background: #2A292B;
+    padding: 20px 50px;
+    min-height: 65px;
+    display: flex;
+
+    .footer-bar-wrapper {
+        position: relative;
+        width: 100%;
+
+        .footer-bar-left {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .footer-bar-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .footer-bar-right {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        p {
+            font-size: 11px;
+            color: $white;
+            text-transform: uppercase;
+        }
+
+        .footer-logo {
+            a {
+                font-family: $title-font;
+                font-size: 28px;
+                font-weight: 500;
+                color: $white;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+/*.....common banner........*/
+.ta-banner-common-section {
+    background: #2a292b;
+    padding: 35px 0;
+    display: flex;
+    justify-content: center;
+
+    .ta-name-middle {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+
+        .ta-navbar-name {
+            h3 {
+                margin-bottom: unset;
+                font-weight: 800;
+                font-size: 22px;
+                color: $white;
+                font-family: $title-font;
+            }
+        }
+    }
+}
